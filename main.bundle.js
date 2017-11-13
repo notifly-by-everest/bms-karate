@@ -377,7 +377,9 @@ var InputDetailsComponent = (function () {
             userPhone: this.userPhone,
             userEmail: this.userEmail,
             userName: this.userFname + ' ' + this.userLname,
-            trainerKey: this.selected_trainer_key
+            trainerKey: this.selected_trainer_key,
+            trainerName: this._webSrv.selected_trainer_name,
+            organization: this._webSrv.environment_object['org_name']
         };
         console.log(appointmentObj);
         this._webSrv.submitAnAppointment(appointmentObj).subscribe(function (res) {
@@ -569,7 +571,7 @@ var SelectDateComponent = (function () {
         }
         console.log(this.week4);
         for (var i = 28; i < 35; i++) {
-            if (scheduleArray[i]['show']) {
+            if (scheduleArray[i] && scheduleArray[i]['show']) {
                 this.week5.push(scheduleArray[i]);
             }
         }
